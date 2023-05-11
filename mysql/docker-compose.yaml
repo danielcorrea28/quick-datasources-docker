@@ -5,14 +5,14 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: 'db'
-      MYSQL_USER: 'appsmith'
-      MYSQL_PASSWORD: 'appsmith'
-      MYSQL_ROOT_PASSWORD: 'appsmith'
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_USER: 'db_user'
+      MYSQL_PASSWORD: 'db_password'
     ports:
       - '3306:3306'
     expose:
       - '3306'
     volumes:
-      - my-db:/var/lib/mysql
+      - mysql-db:/var/lib/mysql
 volumes:
-  my-db:
+  mysql-db:

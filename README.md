@@ -1,14 +1,13 @@
-# Appsmith Lightning Datasources
+# Docker Datasources
 
-We know that setting up Datasources in Appsmith is fast and easy, but sometimes setting up the services you want to connect to is not as easy.
-
-This project aims to provide fast and easy steps to set up such services so that you can get to hacking around with Appsmith as soon as possible.
+This project aims to provide quick and easy steps for configuring database services so that you can start programming and testing as soon as possible.
 
 ## Notes
 
 - The deployment instructions provided here are not suited for production use, please use them for testing and POCs only.
 - On Linux, docker commands must be run as administrator.
 - If you are deploying this on a hosting provider, you will need to use `Ngrok` to get a usable URL to connect to. If you use this locally, just remember to use `localhost`.
+
 - Example how to get Ngrok host and port to make connections.
 ```console
 appsmith@ngrok:~$ ngrok tcp 3306
@@ -85,21 +84,22 @@ ngrok tcp 27017
 ```yaml
 version: '3.3'
 services:
-  mysql:
+  db:
     image: mysql:5.7
     restart: always
     environment:
       MYSQL_DATABASE: 'db'
-      MYSQL_USER: 'appsmith'
-      MYSQL_PASSWORD: 'appsmith'
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_USER: 'db_user'
+      MYSQL_PASSWORD: 'db_password'
     ports:
       - '3306:3306'
     expose:
       - '3306'
     volumes:
-      - my-db:/var/lib/mysql
+      - mysql-db:/var/lib/mysql
 volumes:
-  my-db:
+  mysql-db:
 ```
 2. Run the deployment. 
 
@@ -110,18 +110,8 @@ docker-compose up -d docker-compose.yaml
 ```
 docker-compose -f docker-compose.seeded.yaml up -d
 ```
-3. Open a terminal and create a reachable URL via Ngrok with the following command.
 
-```bash
-ngrok tcp 3306
-```
-4. Follow our guide to create a [MySQL Datasource](https://docs.appsmith.com/reference/datasources/querying-mysql).
-   - Use the URL provided by the Ngrok command as the *host* in your connection settings.
-   
-   `Note: disable the SSL`
-   
-5. Happy hacking!
-
+3. Happy coding! 
 
 
 
