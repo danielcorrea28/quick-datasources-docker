@@ -33,7 +33,7 @@ ttl     opn     rt1     rt5     p50     p90
 
 - [Docker](https://docs.docker.com/engine/install/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
-- [Ngrok](https://ngrok.com/)
+- [Ngrok](https://ngrok.com/) (Optional)
 
 
 ## Service Setup
@@ -45,13 +45,14 @@ ttl     opn     rt1     rt5     p50     p90
 ```yaml
 version: '3.1'
 services:
-  mongodb:
-    image: mongo:6.0
+  mongo:
+    image: mongo:6.0.2
     restart: always
-    container_name: mongodb
+    container_name: mongo
+    hostname: host-mongo
     environment:
-      MONGO_INITDB_ROOT_USERNAME: appsmith
-      MONGO_INITDB_ROOT_PASSWORD: appsmith
+      MONGO_INITDB_ROOT_USERNAME: develop_user
+      MONGO_INITDB_ROOT_PASSWORD: develop_password
     ports:
       - "27017:27017"
 ```
@@ -65,15 +66,7 @@ docker-compose up -d docker-compose.yaml
 ```
 docker-compose -f docker-compose.seeded.yaml up -d
 ```
-3. Open a terminal and create a reachable URL via Ngrok with the following command.
-
-```bash
-ngrok tcp 27017
-```
-4. Follow our guide to create a [MongoDB Datasource](https://docs.appsmith.com/reference/datasources/querying-mongodb).
-    - Use the URL provided by the Ngrok command as the *host* in your connection settings.
-
-5. Happy hacking!
+3. Happy coding! 
 
 
 
