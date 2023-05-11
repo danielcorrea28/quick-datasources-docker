@@ -120,7 +120,7 @@ services:
           volumes:
           - './postgres_data:/var/lib/postgresql/data'
           environment:
-          - POSTGRES_PASSWORD=appsmith
+          - POSTGRES_PASSWORD=postgres
           ports:
           - '5432:5432'
 ```
@@ -132,26 +132,20 @@ docker-compose up -d docker-compose.yaml
 ```
 docker-compose -f docker-compose.seeded.yaml up -d
 ```
-3. Open a terminal and create a reachable URL via Ngrok with the following command.
-```bash
-ngrok tcp 5432
-```
-4. Follow our guide to create a [PostgreSQL](https://docs.appsmith.com/reference/datasources/querying-postgres).
-   - Use the URL provided by the Ngrok command as the *host* in your connection settings.
-5. Host and port are given by ngrok
-6. Database name
+
+3. Database name
 `
 postgres
 `
-7. User
+4. User
 `
 postgres
 `
-8. Password
-`
-secure_pass_here
-`
-9. Happy hacking!
+
+5. Happy coding!
+
+
+
 
 ###  🟥 Redis
 
