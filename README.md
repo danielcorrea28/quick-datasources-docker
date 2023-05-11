@@ -172,14 +172,7 @@ volumes:
 ```bash
 docker-compose up -d docker-compose.yaml 
 ```
-3. Open a terminal and create a reachable URL via Ngrok with the following command.
-```bash
-ngrok tcp 6379
-```
-4.  Follow our guide to create a [Redis](https://docs.appsmith.com/reference/datasources/querying-redis).
-    - Use the URL provided by the Ngrok command as the *host* in your connection settings.
-5. Host and port are given by ngrok
-6. Happy hacking!
+3. Happy coding!
 
 ###  ElasticSearch
 1. Copy the provider docker-compose.yml [for ElasticSearch](/ElasticSearch/docker-compose.yaml).
