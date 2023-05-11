@@ -3,8 +3,8 @@ services:
     image: postgres:latest
     restart: always
     environment:
-      POSTGRES_USER: appsmith
-      POSTGRES_PASSWORD: appsmith
+      POSTGRES_USER: develop_user 
+      POSTGRES_PASSWORD: develop_password
       POSTGRES_DB: develop
     ports:
       - "5432:5432"
