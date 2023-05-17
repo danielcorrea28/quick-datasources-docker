@@ -248,7 +248,7 @@ docker-compose -f docker-compose.seeded.yaml up -d
 
 8. Password: `root_password`
 
-
+9. Happy coding!
 
 
 # Configuring other data sources 
