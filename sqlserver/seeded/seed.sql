@@ -35,8 +35,3 @@ BEGIN
     );
     SET @counter += 1;
 END;
-
-
-
-
-

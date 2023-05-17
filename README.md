@@ -141,8 +141,11 @@ postgres
 `
 postgres
 `
-
-5. Happy coding!
+5. Password
+`
+postgres
+`
+6. Happy coding!
 
 
 
@@ -236,7 +239,7 @@ services:
       - ~/apps/mssql/data:/var/lib/mssqlql/data
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=Appsmith1!
+      - SA_PASSWORD=password@123
 ```
 2. Run the deployment.
 ```bash
@@ -251,16 +254,10 @@ docker-compose up -d docker-compose.yaml
   ```
   docker-compose -f docker-compose.seeded.yaml up -d
   ```
-3. Open a terminal and create a reachable URL via Ngrok with the following command.
-```bash
-ngrok tcp 1433 
-```
-4. Follow our guide to create a [SqlServer](https://docs.appsmith.com/reference/datasources/querying-mssql)
-   - Use the URL provided by the Ngrok command as the *host* in your connection settings.
-5. default database name: ` master `
+5. default database name: `master`
 6. Username: `sa`
-7. Password: ` Appsmith1! `
-8. Happy hacking!
+7. Password: `password@123`
+8. Happy coding!
 
 ### 📧 SMTP 
 
