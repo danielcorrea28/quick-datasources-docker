@@ -222,32 +222,27 @@ docker-compose up -d
 ### 📧 SMTP 
 
 1. Copy the provider docker-compose.yml [for SMTP](/SMTP/docker-compose.yaml)
-```yaml
-version: '3'
-services:
-  mail:
-    image: bytemark/smtp
-    restart: always
-    ports:
-     - "25:25"
-    environment:
-      RELAY_HOST: smtp.gmail.com
-      RELAY_PORT: 587
-      RELAY_USERNAME: appsmith
-      RELAY_PASSWORD: appsmith
-```
+
 2. Run the deployment.
+
 ```bash
-docker-compose up -d docker-compose.yaml
+docker-compose up -d
 ```
+
 3.  Open a terminal and create a reachable URL via Ngrok with the following command.
+
 ```bash
  ngrok tcp 25 
 ```
-4. Follow our guide to create an [SMTP](https://docs.appsmith.com/reference/datasources/using-smtp)
-    - Use the URL provided by the Ngrok command as the *host* in your connection settings.
-5. The password and username are ` appsmith`
-6. Happy hacking!
+
+4. The username is `develop_user`
+
+5. The password is `develop_password`
+
+6. Happy coding!
+
+
+
 
 ### 🥑 ArangoDB
 1. Copy the provider docker-compose.yml [for ArangoDB](/ArangoDB/docker-compose.yaml)
