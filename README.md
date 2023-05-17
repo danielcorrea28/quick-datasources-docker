@@ -42,31 +42,28 @@ ttl     opn     rt1     rt5     p50     p90
 
 1. Copy the provided `docker-compose.yaml` [for MongoDB](MongoDB/docker-compose.yaml).
 
-```yaml
-version: '3.1'
-services:
-  mongo:
-    image: mongo:6.0.2
-    restart: always
-    container_name: mongo
-    hostname: host-mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: develop_user
-      MONGO_INITDB_ROOT_PASSWORD: develop_password
-    ports:
-      - "27017:27017"
-```
-
 2. Run the deployment. 
 
 ```bash
-docker-compose up -d docker-compose.yaml
+docker-compose up -d
 ```
 `Note: There is a version that uses a seed, in case you want to test with a DB with data`
+
 ```
 docker-compose -f docker-compose.seeded.yaml up -d
 ```
-3. Happy coding! 
+
+3. User
+`
+develop_user
+`
+
+4. Password
+`
+develop_password
+`
+
+5. Happy coding! 
 
 
 
@@ -74,59 +71,45 @@ docker-compose -f docker-compose.seeded.yaml up -d
 ### 🐬 MySQL
 
 1. Copy the provided `docker-compose.yaml` [for MySQL](Mysql/docker-compose.yaml).
-```yaml
-version: '3.3'
-services:
-  db:
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_DATABASE: 'db'
-      MYSQL_ROOT_PASSWORD: 'root'
-      MYSQL_USER: 'db_user'
-      MYSQL_PASSWORD: 'db_password'
-    ports:
-      - '3306:3306'
-    expose:
-      - '3306'
-    volumes:
-      - mysql-db:/var/lib/mysql
-volumes:
-  mysql-db:
-```
+
 2. Run the deployment. 
 
 ```bash
-docker-compose up -d docker-compose.yaml
+docker-compose up -d
 ```
 `Note: There is a version that uses a seed, in case you want to test with a DB with data`
 ```
 docker-compose -f docker-compose.seeded.yaml up -d
 ```
 
-3. Happy coding! 
+3. Database name
+`
+db
+`
+
+4. User
+`
+db_user
+`
+
+5. Password
+`
+db_password
+`
+
+6. Happy coding!
 
 
 
 
 ### 🐘 PostgreSQL 
+
 1. Copy the provider ` docker-compose.yml`[for PostgreSQL](/Postgress/docker-compose.yaml)
-```yaml
-version: '3'
-services:
-  postgres:
-          image: 'postgres:12'
-          restart: always
-          volumes:
-          - './postgres_data:/var/lib/postgresql/data'
-          environment:
-          - POSTGRES_PASSWORD=postgres
-          ports:
-          - '5432:5432'
-```
+
 2. Run the deployment.
+
 ``` bash
-docker-compose up -d docker-compose.yaml 
+docker-compose up -d
 ```
 `Note: There is a version that uses a seed, in case you want to test with a DB with data`
 ```
@@ -137,14 +120,17 @@ docker-compose -f docker-compose.seeded.yaml up -d
 `
 postgres
 `
+
 4. User
 `
 postgres
 `
+
 5. Password
 `
 postgres
 `
+
 6. Happy coding!
 
 
@@ -153,111 +139,85 @@ postgres
 ###  🟥 Redis
 
 1. Copy the provider docker-compose.yml [for Redis](/Redis/docker-compose.yaml).
-```yaml
-version: '2'
 
-services:
-  redis:
-    image: docker.io/bitnami/redis:7.0
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
-    ports:
-      - '6379:6379'
-    volumes:
-      - 'redis_data:/bitnami/redis/data'
-
-volumes:
-  redis_data:
-    driver: local
-```
 2. Run the deployment.
+
 ```bash
-docker-compose up -d docker-compose.yaml 
+docker-compose up -d
 ```
+
 3. Happy coding!
 
-###  ElasticSearch
-1. Copy the provider docker-compose.yml [for ElasticSearch](/ElasticSearch/docker-compose.yaml).
-```yaml
-version: "3.0"
-services:
-  elasticsearch:
-    container_name: es-container
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.11.0
-    environment:
-      - xpack.security.enabled=false
-      - "discovery.type=single-node"
-    networks:
-      - es-net
-    ports:
-      - 9200:9200
-  kibana:
-    container_name: kb-container
-    image: docker.elastic.co/kibana/kibana:7.11.0
-    environment:
-      - ELASTICSEARCH_HOSTS=http://es-container:9200
-    networks:
-      - es-net
-    depends_on:
-      - elasticsearch
-    ports:
-      - 5601:5601
-networks:
-  es-net:
-    driver: bridge
-```
 
+
+
+###  🔰 ElasticSearch
+
+1. Copy the provider docker-compose.yml [for ElasticSearch](/ElasticSearch/docker-compose.yaml).
 
 ` Note: This installation may take a long time. `
 
-
 2. Run the deployment.
+
 ```bash
-docker-compose up -d docker-compose.yaml 
+docker-compose up -d
 ```
-3. Open a terminal and create a reachable URL via Ngrok with the following command
-```bash 
-ngrok http 9200
+
+3. Make sure Elasticsearch is running correctly by typing following URL.
+
+```bash
+http://localhost:9200
 ```
-4. Follow our guide to create a  form ElasticSearch [ElasticSearch](https://docs.appsmith.com/reference/datasources/querying-elasticsearch).
-   - Use the URL provided by the Ngrok command as the *host* in your connection settings.
-6. The port for the connection is ` 443 `
-7. Happy hacking!
+
+You should see a JSON response with the information of the Elasticsearch instance.
+
+4. Make sure Kibana is running correctly by typing the following URL.
+
+```bash
+http://localhost:9200
+```
+
+You should see the Kibana data visualization dashboard.
+
+5. Happy coding!
+
+
+
 
 ### SqlServer
 
 1. Copy the provider docker-compose.yml [for SqlServer](/SqlServer/docker-compose.yaml).
-```yaml
-version: '3.9'
-services:
-  mssql:
-    image: mcr.microsoft.com/mssql/server:2017-CU31-ubuntu-18.04
-    ports:
-      - 1433:1433
-    volumes:
-      - ~/apps/mssql/data:/var/lib/mssqlql/data
-    environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=password@123
-```
+
 2. Run the deployment.
+
 ```bash
-docker-compose up -d docker-compose.yaml 
+docker-compose up -d 
 ```
+
 `Note: There is a version that uses a seed, in case you want to test with a DB with data`
+
 - Navigate to the path sqlserver/seeded
+
   ```bash
   cd sqlserver/seeded
   ```
+
 - Run the command.
+
   ```
   docker-compose -f docker-compose.seeded.yaml up -d
   ```
-5. default database name: `master`
+
+5. Default database name: `master`
+
 6. Username: `sa`
+
 7. Password: `password@123`
+
 8. Happy coding!
+
+
+
 
 ### 📧 SMTP 
 
