@@ -18,11 +18,25 @@ This project aims to provide quick and easy steps for configuring database servi
 
 ## Service Setup
 
+Navigate to the folder in which you want to store all the services present in this repository. Open a `cmd` and run the following command:
+
+```bash
+git clone https://github.com/danielcorrea28/quick-datasources-docker.git
+```
+
+Then, go to the section for the service you want to run and follow the specified steps.
+
 ### 🌿 MongoDB
 
-1. Copy the provided `docker-compose.yaml` [for MongoDB](./mongodb/docker-compose.yaml).
+1. Go to the MongoDB folder.
 
-2. Run the deployment. 
+```bash
+cd mongodb
+```
+
+2. Check the provided `docker-compose.yaml` [for MongoDB](./mongodb/docker-compose.yaml) and change _username_ and _password_ if it is necessary.
+
+3. Run the deployment. 
 
 ```bash
 docker-compose up -d
@@ -33,26 +47,34 @@ docker-compose up -d
 docker-compose -f docker-compose.seeded.yaml up -d
 ```
 
-3. User
+`Note: If you did not make any configuration changes, use the following values.`
+
+4. User:
 `
 develop_user
 `
 
-4. Password
+5. Password:
 `
 develop_password
 `
 
-5. Happy coding! 
+6. Happy coding! 
 
 
 
 
 ### 🐬 MySQL
 
-1. Copy the provided `docker-compose.yaml` [for MySQL](./mysql/docker-compose.yaml).
+1. Go to the MySQL folder.
 
-2. Run the deployment. 
+```bash
+cd mysql
+```
+
+2. Check the provided `docker-compose.yaml` [for MySQL](./mysql/docker-compose.yaml) and change _db_, _username_ and _password_ if it is necessary.
+
+3. Run the deployment. 
 
 ```bash
 docker-compose up -d
@@ -62,29 +84,37 @@ docker-compose up -d
 docker-compose -f docker-compose.seeded.yaml up -d
 ```
 
-3. Database name
+`Note: If you did not make any configuration changes, use the following values.`
+
+4. Database name:
 `
 db
 `
 
-4. User
+5. User:
 `
 db_user
 `
 
-5. Password
+6. Password:
 `
 db_password
 `
 
-6. Happy coding!
+7. Happy coding!
 
 
 
 
 ### 🐘 PostgreSQL 
 
-1. Copy the provider ` docker-compose.yml`[for PostgreSQL](./postgress/docker-compose.yaml)
+1. Go to the Postgress folder.
+
+```bash
+cd postgress
+```
+
+2. Check the provider ` docker-compose.yml`[for PostgreSQL](./postgress/docker-compose.yaml) and change _password_ if it is necessary.
 
 2. Run the deployment.
 
@@ -96,17 +126,19 @@ docker-compose up -d
 docker-compose -f docker-compose.seeded.yaml up -d
 ```
 
-3. Database name
+`Note: If you did not make any configuration changes, use the following values.`
+
+3. Database name:
 `
 postgres
 `
 
-4. User
+4. User:
 `
 postgres
 `
 
-5. Password
+5. Password:
 `
 postgres
 `
@@ -118,32 +150,44 @@ postgres
 
 ###  🟥 Redis
 
-1. Copy the provider docker-compose.yml [for Redis](./redis/docker-compose.yaml).
+1. Go to the Redis folder.
 
-2. Run the deployment.
+```bash
+cd redis
+```
+
+2. Check the provider docker-compose.yml [for Redis](./redis/docker-compose.yaml). Because this project is for testing or development purposes, it is configured with _empty password_. 
+
+3. Run the deployment.
 
 ```bash
 docker-compose up -d
 ```
 
-3. Happy coding!
+4. Happy coding!
 
 
 
 
 ###  🔰 ElasticSearch
 
-1. Copy the provider docker-compose.yml [for ElasticSearch](./elasticsearch/docker-compose.yaml).
+1. Go to the ElasticSearch folder.
 
-` Note: This installation may take a long time. `
+```bash
+cd elasticsearch
+```
 
-2. Run the deployment.
+2. Check the provider docker-compose.yml [for ElasticSearch](./elasticsearch/docker-compose.yaml) and make changes if it is necessary.
+
+3. Run the deployment.
 
 ```bash
 docker-compose up -d
 ```
 
-3. Make sure Elasticsearch is running correctly by typing following URL.
+` Note: This installation may take a long time. `
+
+3. Make sure ElasticSearch is running correctly by typing following URL.
 
 ```bash
 http://localhost:9200
@@ -166,9 +210,15 @@ You should see the Kibana data visualization dashboard.
 
 ### 📅 SqlServer
 
-1. Copy the provider docker-compose.yml [for SqlServer](./sqlserver/docker-compose.yaml).
+1. Go to the SQLServer folder.
 
-2. Run the deployment.
+```bash
+cd sqlserver
+```
+
+2. Check the provider docker-compose.yml [for SqlServer](./sqlserver/docker-compose.yaml) and change _password_ if it is necessary.
+
+3. Run the deployment.
 
 ```bash
 docker-compose up -d 
@@ -188,47 +238,63 @@ docker-compose up -d
   docker-compose -f docker-compose.seeded.yaml up -d
   ```
 
-5. Default database name: `master`
+`Note: If you did not make any configuration changes, use the following values.`
 
-6. Username: `sa`
+4. Default database name: `master`
 
-7. Password: `password@123`
+5. Username: `sa`
 
-8. Happy coding!
+6. Password: `password@123`
+
+7. Happy coding!
 
 
 
 
 ### 📧 SMTP 
 
-1. Copy both the provider docker-compose.yml [for SMTP](./smtp/docker-compose.yaml) and the [.env file](./smtp/.env) file and put them in the same folder.
+1. Go to the SMTP folder.
 
-2. Run the deployment.
+```bash
+cd smtp
+```
+
+2. Check the provider [.env file](./smtp/.env) file and make changes if it is necessary.
+
+3. Run the deployment.
 
 ```bash
 docker-compose up -d
 ```
 
-3.  Open a terminal and create a reachable URL via Ngrok with the following command.
+4.  Open a terminal and [create a reachable URL via Ngrok](Ngrok_example.md) with the following command.
 
 ```bash
  ngrok tcp 25 
 ```
 
-4. The username is `develop_user`
+`Note: If you did not make any configuration changes, use the following values.`
 
-5. The password is `develop_password`
+5. The username is `develop_user`
 
-6. Happy coding!
+6. The password is `develop_password`
+
+7. Happy coding!
 
 
 
 
 ### 🥑 ArangoDB
 
-1. Copy the provider docker-compose.yml [for ArangoDB](./arangodb/docker-compose.yaml)
+1. Go to the ArangoDB folder.
 
-2. Run the deployment.
+```bash
+cd arangodb
+```
+
+2. Check the provider docker-compose.yml [for ArangoDB](./arangodb/docker-compose.yaml) and change _password_ if it is necessary.
+
+3. Run the deployment.
 
 ```bash
 docker-compose up -d
@@ -240,15 +306,17 @@ docker-compose up -d
 docker-compose -f docker-compose.seeded.yaml up -d
 ```
 
-5. Go to `http://localhost:8529` and Sign In with the credentials below.
+4. Go to `http://localhost:8529` and Sign In with the credentials.
 
-6. Database name: `_system`
+`Note: If you did not make any configuration changes, use the credentials below.`
 
-7. User: `root`
+5. Database name: `_system`
 
-8. Password: `root_password`
+6. User: `root`
 
-9. Happy coding!
+7. Password: `root_password`
+
+8. Happy coding!
 
 
 # Configuring other data sources 
